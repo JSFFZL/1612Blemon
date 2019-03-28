@@ -21,11 +21,13 @@ ul li {
 .header ul li {
 	margin: 10px 0;
 }
-.header ul .money{
+
+.header ul .money {
 	font-size: 30px;
 	font-weight: bold;
 	margin-bottom: 25px;
 }
+
 .year {
 	position: absolute;
 	top: 10px;
@@ -65,17 +67,52 @@ ul li {
 	padding-top: 180px !important;
 }
 
-.home{
+.home {
 	height: 100%;
 }
-.box{
+
+.box {
 	position: relative;
 	width: 100%;
 	height: 100%;
 }
 
+.bill-item {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+}
 
+.bill-item dl {
+	display: flex;
+	align-items: center;
+}
 
-.hide{
+.bill-item dl dt {
+	background: yellow;
+	border-radius: 50%;
+	font-size: 12px;
+	padding: 4px;
+	margin-right: 10px;
+}
+
+.red {
+	color: red;
+}
+
+.green {
+	color: green;
+}
+
+.li {
+	padding-right: 10px !important;
+}
+
+#pullrefresh {
+	padding-bottom: 230px;
+}
+
+.hide {
 	display: none;
 }

@@ -1,1 +1,7 @@
 https://blog.csdn.net/feifanzhuli/article/details/86559721
+
+MongoDB导出数据：
+mongoexport -d 数据库名 -c 集合名 -o 导出的地址及文件名称
+
+MongoDB导入数据：
+mongoimport -d 数据库名 -c 集合名 导出的地址及文件名称

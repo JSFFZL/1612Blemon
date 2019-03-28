@@ -12,8 +12,9 @@ var user = "user";//分类表
 var getLogin = function (req, res, next) {
   var name = req.body.name;
   var pwd = req.body.pwd;
+  
   if (!name && !pwd) {
-    res.json({ code: 3, msg: "参数为空！" })
+    res.json({ code: 3, msg: "参数为空！" });
   } else {
     Mongo.find(db, user, { "name": name, "pwd": pwd }, function (result) {
       if (!result) {

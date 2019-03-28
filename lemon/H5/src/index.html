@@ -6,11 +6,14 @@
 		<title></title>
 		<link href="css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<link rel="stylesheet" type="text/css" href="css/mui.picker.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/mui.poppicker.css" />
+
 	</head>
 	<body>
 
 
-		<div class="login">
+		<div class="login ">
 			<form class="mui-input-group">
 				<div class="mui-input-row">
 					<label>用户名</label>
@@ -49,13 +52,13 @@
 					<header class="mui-bar mui-bar-nav header" style="position: relative !important">
 
 						<ul>
-							<li>年花费</li>
-							<li class="money">85233.00</li>
-							<li><span>年收入</span>：<span>1000.00</span></li>
+							<li>月花费</li>
+							<li class="money">0.00</li>
+							<li><span>月收入</span>：<span class="income">1000.00</span></li>
 						</ul>
 						<div class="year">
-							<span>年</span>
-							<span>2019-03</span>
+							<span class="yearTimer">月</span>
+							<span class="timer"><!-- 年——月 --></span>
 						</div>
 
 					</header>
@@ -70,21 +73,18 @@
 
 					<div class="box">
 						<!-- 内容区域 -->
-						<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+						<!--下拉刷新容器-->
+						<ul id="OA_task_1" class="mui-table-view mui-table-view-chevron list">
+						
+						</ul>
+						<!-- <div id="pullrefresh" class="mui-content mui-scroll-wrapper ">
 							<div class="mui-scroll">
-								<!--数据列表-->
-								<ul class="mui-table-view mui-table-view-chevron">
-									<li class="mui-table-view-cell">
-										<div class="mui-slider-right mui-disabled">
-											<a class="mui-btn mui-btn-red">删除</a>
-										</div>
-										<div class="mui-slider-handle">
-											左滑显示删除按钮
-										</div>
-									</li>
+								<!--数据列表
+								<ul id="OA_task_1" class="mui-table-view mui-table-view-chevron list">
+
 								</ul>
 							</div>
-						</div>
+						</div> -->
 						<!-- 内容区域 -END -->
 					</div>
 
@@ -108,7 +108,7 @@
 				</a>
 				<a class="mui-tab-item exit">
 					<span class="mui-icon mui-icon-gear"></span>
-					<span class="mui-tab-label">设置</span>
+					<span class="mui-tab-label">退出</span>
 				</a>
 			</nav>
 		</div>
