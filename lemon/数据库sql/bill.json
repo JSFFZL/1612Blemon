@@ -1,0 +1,15 @@
+{"_id":{"$oid":"5c9456bcf1ddfc71ff15422f"},"uid":"5c94554cf1ddfc71ff15422d","icon":"mui-icon mui-icon-weixin","style":"奖金","income":"收入","timer":"2019-03-22","money":20000}
+{"_id":{"$oid":"5c9456d5f1ddfc71ff154230"},"uid":"5c94558df1ddfc71ff15422e","icon":"mui-icon mui-icon-camera","income":"收入","style":"工资","timer":"2019-03-22","money":50000}
+{"_id":{"$oid":"5c945ba1f1ddfc71ff154238"},"uid":"5c94554cf1ddfc71ff15422d","icon":"mui-icon mui-icon-weixin","income":"支出","style":"保险","timer":"2019-03-22","money":20000}
+{"_id":{"$oid":"5c945bacf1ddfc71ff154239"},"uid":"5c94558df1ddfc71ff15422e","icon":"mui-icon mui-icon-weixin","income":"支出","style":"基金","timer":"2019-03-22","money":20000}
+{"_id":{"$oid":"5c945bb6f1ddfc71ff15423a"},"uid":"5c94558df1ddfc71ff15422e","icon":"mui-icon mui-icon-weixin","income":"支出","style":"国债","timer":"2019-03-22","money":20000}
+{"_id":{"$oid":"5c945bc0f1ddfc71ff15423b"},"uid":"5c94554cf1ddfc71ff15422d","icon":"mui-icon mui-icon-weixin","income":"收入","style":"兼职","timer":"2019-03-21","money":1000}
+{"_id":{"$oid":"5c945bc4f1ddfc71ff15423f"},"uid":"5c94558df1ddfc71ff15422e","icon":"mui-icon mui-icon-weixin","income":"收入","style":"摆地摊","timer":"2019-03-22","money":3000}
+{"_id":{"$oid":"5c945bc4f1ddfc71ff154240"},"uid":"5c94554cf1ddfc71ff15422d","icon":"mui-icon mui-icon-weixin","income":"收入","style":"家教","timer":"2019-03-22","money":1530}
+{"_id":{"$oid":"5c945bc4f1ddfc71ff154241"},"uid":"5c94554cf1ddfc71ff15422d","icon":"mui-icon mui-icon-weixin","income":"支出","style":"按摩","timer":"2019-02-21","money":3580}
+{"_id":{"$oid":"5c945ed1c8e1665ab0b177b6"},"uid":"5c94558df1ddfc71ff15422e","icon":"mui-icon mui-icon-starhalf","style":"旅游","income":"支出","timer":"2019-03-20","money":500}
+{"_id":{"$oid":"5c946121c8e1665ab0b177b7"},"uid":"5c94554cf1ddfc71ff15422d","icon":"mui-icon mui-icon-starhalf","style":"水果","income":"支出","timer":"2019-02-10","money":50}
+{"_id":{"$oid":"5c9480d2d9f92529b4612406"},"uid":"5c94554cf1ddfc71ff15422d","icon":"mui-icon mui-icon-starhalf","style":"地铁","income":"支出","timer":"2019-02-10","money":150}
+{"_id":{"$oid":"5c99ccb81feb0bc971bef667"},"uid":"5c94554cf1ddfc71ff15422d","icon":"mui-icon mui-icon-image","style":"地铁336","income":"支出","timer":"2019-03-10","money":15}
+{"_id":{"$oid":"5c99ccbe1feb0bc971bef668"},"uid":"5c94554cf1ddfc71ff15422d","icon":"mui-icon mui-icon-image","style":"地铁1136","income":"支出","timer":"2019-03-10","money":15}
+{"_id":{"$oid":"5c99ccc11feb0bc971bef669"},"uid":"5c94554cf1ddfc71ff15422d","icon":"mui-icon mui-icon-image","style":"地铁1236","income":"收入","timer":"2019-03-10","money":12}

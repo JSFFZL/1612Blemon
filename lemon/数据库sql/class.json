@@ -1,0 +1,4 @@
+{"_id":{"$oid":"5c949097ca9c5ad9de7b146b"},"uid":"5c94554cf1ddfc71ff15422d","style":"收入","icon":"mui-icon mui-icon-info","intro":"妈妈给"}
+{"_id":{"$oid":"5c9490ceca9c5ad9de7b146c"},"uid":"5c94558df1ddfc71ff15422e","style":"收入","icon":"mui-icon mui-icon-info","intro":"工资"}
+{"_id":{"$oid":"5c9490f8ca9c5ad9de7b146d"},"uid":"5c94558df1ddfc71ff15422e","style":"收入","icon":"mui-icon mui-icon-info","intro":"奖金"}
+{"_id":{"$oid":"5c94910aca9c5ad9de7b146e"},"uid":"5c94558df1ddfc71ff15422e","style":"支出","icon":"mui-icon mui-icon-info","intro":"旅游"}
