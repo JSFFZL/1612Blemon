@@ -75,9 +75,10 @@ require(["mui", "dtPicker", "poppicker"], function(mui, dtPicker, poppicker) {
 	function init() {
 
 		windowTimer();
-		// pullRefresh();
+		pullRefresh();
 		dtPickerFun();
 		yearFun();
+		addBill();
 
 		//初始化日期组件
 		dtPickerTimer = new mui.DtPicker({
@@ -193,13 +194,10 @@ require(["mui", "dtPicker", "poppicker"], function(mui, dtPicker, poppicker) {
 		mui.init({
 			pullRefresh: {
 				container: '#pullrefresh',
-				// 				down: {
-				// 					callback: pulldownRefresh
-				// 				},
-				up: {
-					contentrefresh: '正在加载...',
-					callback: getBillFun
-				}
+// 				up: {
+// 					contentrefresh: '',
+// 					callback: getBillFun
+// 				}
 			}
 		});
 	}
@@ -315,6 +313,13 @@ require(["mui", "dtPicker", "poppicker"], function(mui, dtPicker, poppicker) {
 		window.history.go(0)
 		这三个刷新当前页面的方法是最快速的。
 		*/
+	}
+	
+	//跳转到添加账单页面
+	function addBill(){
+		document.querySelector('.tils').addEventListener('tap',function(){
+			window.location.href = '../html/userClass.html';
+		})
 	}
 
 	mui('#OA_task_1').on('tap', '.mui-btn', function(event) {

@@ -9,7 +9,8 @@ gulp.task('webserver',function(){
 		port:8086,
 		proxies:[
 			{source:"/api/getlogin",target:"http://localhost:3000/api/getlogin"},
-			{source:"/api/getBill",target:"http://localhost:3000/api/getBill"}
+			{source:"/api/getBill",target:"http://localhost:3000/api/getBill"},
+			{source:"/api/getClass",target:"http://localhost:3000/api/getClass"}
 		]
 	}))
 })
