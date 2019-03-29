@@ -38,10 +38,10 @@ require(["mui", "dtPicker", "poppicker"], function(mui, dtPicker, poppicker) {
 	let getTimer = year + "-" + (month < 10 ? "0" + month : month); //月份小于10补0
 	//当前的年或者月
 	let curYm = '';
-	
+
 	let getYear = document.querySelector('.timer').innerHTML;
 	let expense = 0; //花费总金额
-	let getIncome = 0;//收入总金额
+	let getIncome = 0; //收入总金额
 
 
 
@@ -153,29 +153,29 @@ require(["mui", "dtPicker", "poppicker"], function(mui, dtPicker, poppicker) {
 					//月的视图
 					pickerM.style.display = "none";
 					titlerM.style.display = "none";
-					
+
 					pickerY.style.width = "100%";
 					titleY.style.width = "100%";
-					
+
 
 					//选择年，赋值给时间当前的年份
 					document.querySelector('.timer').innerHTML = year;
-					
+
 					curYm = "year";
-					
+
 					getBillFun(getYear);
 				} else {
 					pickerM.style.display = "inline-block"; //inline-block
 					titlerM.style.display = "inline-block"; //inline-block
 					// titlerY.style.display = "inline-block"; //inline-block
-					
+
 					//年的视图
 					titleY.style.width = "50%";
 					pickerY.style.width = "50%";
 					//月的视图
 					pickerM.style.width = "50%";
 					titlerM.style.width = "50%";
-					
+
 					windowTimer();
 					curYm = "month"
 				}
@@ -194,10 +194,10 @@ require(["mui", "dtPicker", "poppicker"], function(mui, dtPicker, poppicker) {
 		mui.init({
 			pullRefresh: {
 				container: '#pullrefresh',
-// 				up: {
-// 					contentrefresh: '',
-// 					callback: getBillFun
-// 				}
+				// 				up: {
+				// 					contentrefresh: '',
+				// 					callback: getBillFun
+				// 				}
 			}
 		});
 	}
@@ -219,11 +219,17 @@ require(["mui", "dtPicker", "poppicker"], function(mui, dtPicker, poppicker) {
 					type: 'post', //HTTP请求类型
 					timeout: 10000, //超时时间设置为10秒；
 					success: function(res) {
-						localStorage.setItem("uid", res.data);
-						document.querySelector(".home").classList.remove("hide");
-						document.querySelector(".login").classList.add("hide");
-						//获取账单
-						getBillFun();
+						if (res.code == 0) {
+							mui.alert(res.msg,function (e) {
+							},'div')
+						}else{
+							localStorage.setItem("uid", res.data);
+							document.querySelector(".home").classList.remove("hide");
+							document.querySelector(".login").classList.add("hide");
+							//获取账单
+							getBillFun();
+						}
+
 					}
 				});
 			} else {
@@ -241,7 +247,7 @@ require(["mui", "dtPicker", "poppicker"], function(mui, dtPicker, poppicker) {
 				data: {
 					uid: localUid,
 					// page: page++,
-					timer:timer || getTimer
+					timer: timer || getTimer
 					// pageSize: pageSize
 				},
 				dataType: 'json', //服务器返回json格式数据
@@ -249,15 +255,15 @@ require(["mui", "dtPicker", "poppicker"], function(mui, dtPicker, poppicker) {
 				timeout: 10000, //超时时间设置为10秒；
 				success: function(res) {
 					render(res.data);
-// 					if (res.data.length === 0) {
-// 						mui('#pullrefresh').pullRefresh().endPullupToRefresh(true); //参数为true代表没有更多数据了。
-// 					} else {
-// 						mui('#pullrefresh').pullRefresh().endPullupToRefresh(false); //参数为false代表还有数据。
-// 
-// 						newData = [...newData, ...res.data];
-// 						render(newData);
-// 
-// 					}
+					// 					if (res.data.length === 0) {
+					// 						mui('#pullrefresh').pullRefresh().endPullupToRefresh(true); //参数为true代表没有更多数据了。
+					// 					} else {
+					// 						mui('#pullrefresh').pullRefresh().endPullupToRefresh(false); //参数为false代表还有数据。
+					// 
+					// 						newData = [...newData, ...res.data];
+					// 						render(newData);
+					// 
+					// 					}
 				}
 			});
 		}, 1500)
@@ -269,14 +275,14 @@ require(["mui", "dtPicker", "poppicker"], function(mui, dtPicker, poppicker) {
 	function render(data) {
 		let str = "";
 		data.forEach(function(item) {
-			
-			if(item.income == "支出"){
+
+			if (item.income == "支出") {
 				expense += item.money
-			}else{
+			} else {
 				getIncome += item.money
 			}
-			
-			
+
+
 			str +=
 				`<li class="mui-table-view-cell li">
 					<div class="mui-slider-right mui-disabled">
@@ -314,10 +320,10 @@ require(["mui", "dtPicker", "poppicker"], function(mui, dtPicker, poppicker) {
 		这三个刷新当前页面的方法是最快速的。
 		*/
 	}
-	
+
 	//跳转到添加账单页面
-	function addBill(){
-		document.querySelector('.tils').addEventListener('tap',function(){
+	function addBill() {
+		document.querySelector('.tils').addEventListener('tap', function() {
 			window.location.href = '../html/userClass.html';
 		})
 	}

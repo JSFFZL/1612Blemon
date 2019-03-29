@@ -10,7 +10,9 @@ gulp.task('webserver',function(){
 		proxies:[
 			{source:"/api/getlogin",target:"http://localhost:3000/api/getlogin"},
 			{source:"/api/getBill",target:"http://localhost:3000/api/getBill"},
-			{source:"/api/getClass",target:"http://localhost:3000/api/getClass"}
+			{source:"/api/getClass",target:"http://localhost:3000/api/getClass"},
+			{source:"/api/insertBill",target:"http://localhost:3000/api/insertBill"}
+			
 		]
 	}))
 })

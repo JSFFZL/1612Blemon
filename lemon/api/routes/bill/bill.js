@@ -25,6 +25,10 @@ var findBill = function (req, res, next) {
       } else {
         res.json({ code: 1, data: result })
       }
+    },{
+      sort:{
+        "_id":-1
+      }
     })
   }
 
@@ -51,6 +55,8 @@ var deleteBill = function (req, res, next) {
 //添加账单
 var insertBill = function (req, res, next) {
   var obj = req.body;
+  obj.money = obj.money * 1;
+  console.log(obj);
   Mongo.insert(db, coll_bill, obj, function (result) {
     if (!result) {
       res.json({ code: 0, msg: "添加账单失败" })

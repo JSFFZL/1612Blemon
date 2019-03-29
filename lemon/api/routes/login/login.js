@@ -17,10 +17,11 @@ var getLogin = function (req, res, next) {
     res.json({ code: 3, msg: "参数为空！" });
   } else {
     Mongo.find(db, user, { "name": name, "pwd": pwd }, function (result) {
-      if (!result) {
-        res.json({ code: 0, msg: "用户不存在" })
-      } else {
+      console.log(result.length)
+      if (result.length > 0) {
         res.json({ code: 1, data: result[0]._id }) //返回给前端ID
+      } else {
+        res.json({ code: 0, msg: "用户名或密码错误！" })
       }
     })
   }
