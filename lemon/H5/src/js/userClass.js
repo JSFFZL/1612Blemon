@@ -45,7 +45,6 @@ require(["mui", "dtPicker", "poppicker"], function(mui, dtPicker, poppicker) {
 	   let btn = document.querySelectorAll(".keywords span");
 	   
 	   mui(".keywords").on("tap","span",function(){
-		   // console.log(this.innerHTML);
 		   if(this.innerHTML == "X"){
 		   		money.innerHTML = money.innerHTML.length == 1 ? "0.00" : money.innerHTML.substr(0, money.innerHTML.length - 1);
 		   }else if(money.innerHTML == "0.00"){
