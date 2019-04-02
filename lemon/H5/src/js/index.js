@@ -16,8 +16,6 @@ require.config({
 
 require(["mui", "dtPicker", "poppicker"], function(mui, dtPicker, poppicker) {
 
-
-
 	/* 全局变量 */
 
 	//获取当前缓存的用户ID
@@ -75,7 +73,6 @@ require(["mui", "dtPicker", "poppicker"], function(mui, dtPicker, poppicker) {
 	function init() {
 
 		windowTimer();
-		pullRefresh();
 		dtPickerFun();
 		yearFun();
 		addBill();
@@ -119,9 +116,6 @@ require(["mui", "dtPicker", "poppicker"], function(mui, dtPicker, poppicker) {
 					_this.innerHTML = selectItems.y.value + "-" + selectItems.m.value; //赋值年+月
 					getBillFun(_this.innerHTML);
 				}
-
-
-
 			})
 		})
 
@@ -138,15 +132,10 @@ require(["mui", "dtPicker", "poppicker"], function(mui, dtPicker, poppicker) {
 			let titleY = document.querySelector("[data-id='title-y']");
 			let titlerM = document.querySelector("[data-id='title-m']");
 
-			console.log(pickerY);
-			console.log(pickerM);
-
 			let _this = this;
 			popPicker.show(function(e) {
 				// console.log(e[0].value);
 				_this.innerHTML = e[0].text;
-				console.log(e[0].text);
-
 
 				//判断年月，显示不同的视图
 				if (e[0].value == 'year') {
@@ -156,7 +145,6 @@ require(["mui", "dtPicker", "poppicker"], function(mui, dtPicker, poppicker) {
 
 					pickerY.style.width = "100%";
 					titleY.style.width = "100%";
-
 
 					//选择年，赋值给时间当前的年份
 					document.querySelector('.timer').innerHTML = year;
@@ -189,22 +177,8 @@ require(["mui", "dtPicker", "poppicker"], function(mui, dtPicker, poppicker) {
 		document.querySelector(".timer").innerHTML = year + "-" + (month < 10 ? "0" + month : month); //月份小于10补0
 	}
 
-
-	function pullRefresh() {
-		mui.init({
-			pullRefresh: {
-				container: '#pullrefresh',
-				// 				up: {
-				// 					contentrefresh: '',
-				// 					callback: getBillFun
-				// 				}
-			}
-		});
-	}
-
 	//用户登录业务
 	function login() {
-
 		document.querySelector(".ok").addEventListener('tap', function() {
 			let name = document.querySelector(".name").value;
 			let pwd = document.querySelector(".pwd").value;
@@ -246,24 +220,13 @@ require(["mui", "dtPicker", "poppicker"], function(mui, dtPicker, poppicker) {
 			mui.ajax('/api/getBill', {
 				data: {
 					uid: localUid,
-					// page: page++,
 					timer: timer || getTimer
-					// pageSize: pageSize
 				},
 				dataType: 'json', //服务器返回json格式数据
 				type: 'post', //HTTP请求类型
 				timeout: 10000, //超时时间设置为10秒；
 				success: function(res) {
 					render(res.data);
-					// 					if (res.data.length === 0) {
-					// 						mui('#pullrefresh').pullRefresh().endPullupToRefresh(true); //参数为true代表没有更多数据了。
-					// 					} else {
-					// 						mui('#pullrefresh').pullRefresh().endPullupToRefresh(false); //参数为false代表还有数据。
-					// 
-					// 						newData = [...newData, ...res.data];
-					// 						render(newData);
-					// 
-					// 					}
 				}
 			});
 		}, 1500)
@@ -281,8 +244,6 @@ require(["mui", "dtPicker", "poppicker"], function(mui, dtPicker, poppicker) {
 			} else {
 				getIncome += item.money
 			}
-
-
 			str +=
 				`<li class="mui-table-view-cell li">
 					<div class="mui-slider-right mui-disabled">
@@ -327,14 +288,21 @@ require(["mui", "dtPicker", "poppicker"], function(mui, dtPicker, poppicker) {
 			window.location.href = '../html/userClass.html';
 		})
 	}
+	
+	function delBill(){
+	}
 
 	mui('#OA_task_1').on('tap', '.mui-btn', function(event) {
 		var elem = this;
 		var li = elem.parentNode.parentNode;
 		mui.confirm('确认删除该条记录？', 'Hello MUI', ['确认', '取消'], function(e) {
 			if (e.index == 0) {
+				//确认删除
 				li.parentNode.removeChild(li);
+				location.reload();
+				
 			} else {
+				//取消删除
 				setTimeout(function() {
 					mui.swipeoutClose(li);
 				}, 0);

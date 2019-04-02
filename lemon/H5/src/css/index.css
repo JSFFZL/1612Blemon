@@ -7,6 +7,36 @@ ul li {
 	list-style: none;
 }
 
+.a-fadeoutB {
+	animation: all 2.5s;
+	-webkit-animation-name: fadeoutB;
+	-moz-animation-name: fadeoutB;
+	-ms-animation-name: fadeoutB;
+	animation-name: fadeoutB;
+}
+
+/* 淡出-向下 */
+@-webkit-keyframes fadeoutB {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+
+@keyframes fadeoutB {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
 .header {
 	/* position: relative !important; */
 	height: 120px;
@@ -73,9 +103,12 @@ ul li {
 
 .box {
 	position: relative;
+	top: 180px;
 	/* width: 100%;
 	height: 100%; */
-	overflow: auto;
+	overflow: hidden;
+	background: #fff;
+	height: 100%;
 }
 
 .bill-item {
@@ -83,6 +116,7 @@ ul li {
 	width: 100%;
 	justify-content: space-between;
 	align-items: center;
+	background: #fff;
 }
 
 .bill-item dl {
@@ -119,8 +153,50 @@ ul li {
 }
 
 .list {
-	padding-bottom: 200px;
+	padding-bottom: 100px;
 }
+
+.loading {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	z-index: 10;
+	transform: translate(-50%, -50%);
+} 
+.loading span{
+	animation: all 5s deg !important;
+	/* animation-name: all 5s deg !important; */
+	/* animation: all 2.5s;
+	animation-name: fadeoutB; */
+}
+
+.mc {
+	position: fixed;
+	top: 0;
+	z-index: 99;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.3);
+}
+
+@keyframes deg{
+	from{
+		transform: rotate(0);
+	}
+	to{
+		transform: rotate(360deg);
+	}
+}
+
+@-webkit-keyframes deg{
+	from{
+		transform: rotate(0);
+	}
+	to{
+		transform: rotate(360deg);
+	}
+}
+
 
 .tils {
 	position: fixed;
@@ -136,4 +212,13 @@ ul li {
 
 .tils span {
 	font-size: 50px;
+}
+
+.flex {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 99;
+	background: #fff;
+	border-bottom: solid #999 1px;
 }
