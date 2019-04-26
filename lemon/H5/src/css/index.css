@@ -8,11 +8,7 @@ ul li {
 }
 
 .a-fadeoutB {
-	animation: all 2.5s;
-	-webkit-animation-name: fadeoutB;
-	-moz-animation-name: fadeoutB;
-	-ms-animation-name: fadeoutB;
-	animation-name: fadeoutB;
+	animation: fadeoutB 1s linear;
 }
 
 /* 淡出-向下 */
@@ -104,8 +100,6 @@ ul li {
 .box {
 	position: relative;
 	top: 180px;
-	/* width: 100%;
-	height: 100%; */
 	overflow: hidden;
 	background: #fff;
 	height: 100%;
@@ -162,12 +156,10 @@ ul li {
 	left: 50%;
 	z-index: 10;
 	transform: translate(-50%, -50%);
-} 
-.loading span{
+}
+
+.loading span {
 	animation: all 5s deg !important;
-	/* animation-name: all 5s deg !important; */
-	/* animation: all 2.5s;
-	animation-name: fadeoutB; */
 }
 
 .mc {
@@ -179,20 +171,22 @@ ul li {
 	background: rgba(0, 0, 0, 0.3);
 }
 
-@keyframes deg{
-	from{
+@keyframes deg {
+	from {
 		transform: rotate(0);
 	}
-	to{
+
+	to {
 		transform: rotate(360deg);
 	}
 }
 
-@-webkit-keyframes deg{
-	from{
+@-webkit-keyframes deg {
+	from {
 		transform: rotate(0);
 	}
-	to{
+
+	to {
 		transform: rotate(360deg);
 	}
 }
@@ -221,4 +215,51 @@ ul li {
 	z-index: 99;
 	background: #fff;
 	border-bottom: solid #999 1px;
+}
+
+.no-bill {
+	display: none;
+	padding: 20px 0;
+	width: 100%;
+	text-align: center;
+	font-size: 25px;
+}
+
+.loading {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	z-index: 99;
+	transform: translate(-50%, -50%);
+}
+
+.loading span {
+	font-size: 35px;
+	animation: rotate 2s infinite linear;
+}
+
+@keyframes rotate {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+.each{
+	display: none;
+	position: relative;
+	top:150px;
+}
+
+.innerBox {
+	display: none;
+	position: fixed;
+	z-index: 9999;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.2);
 }

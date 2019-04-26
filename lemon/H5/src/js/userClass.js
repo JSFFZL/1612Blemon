@@ -117,9 +117,8 @@ require(["mui", "dtPicker", "poppicker"], function(mui, dtPicker, poppicker) {
 
 	//获取当前的用户分类
 	function getClass() {
-		let style = document.querySelector(".tab-list .active").innerHTML;
-
-		console.log(style);
+		document.querySelector(".innerBox").style.display = "block";//lodding 等待效果
+		let style = document.querySelector(".tab-list .active").innerHTML;//获取当前的分类tab值
 		mui.ajax('/api/getClass', {
 			data: {
 				uid: localUid,
@@ -129,6 +128,7 @@ require(["mui", "dtPicker", "poppicker"], function(mui, dtPicker, poppicker) {
 			type: 'post', //HTTP请求类型
 			timeout: 10000, //超时时间设置为10秒；
 			success: function(res) {
+				document.querySelector(".innerBox").style.display = "none";//lodding 等待效果
 				console.log(res)
 				render(res.data)
 
@@ -140,7 +140,6 @@ require(["mui", "dtPicker", "poppicker"], function(mui, dtPicker, poppicker) {
 	function render(data) {
 		let str = "";
 		data.forEach(function(item) {
-
 			str +=
 				`<dl>
 					<dt>

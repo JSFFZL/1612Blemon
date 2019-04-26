@@ -1,0 +1,46 @@
+.mui-content {
+  background: #fff; }
+
+.choose-wrap {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 15px 0 15px 15px;
+  border-bottom: 1px solid gray; }
+  .choose-wrap .mui-icon {
+    padding: 6px;
+    background: yellow;
+    border-radius: 50%; }
+  .choose-wrap input {
+    border: none;
+    font-size: 18px;
+    text-align: right;
+    margin-bottom: 0; }
+
+.mui-slider-item > ul {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap; }
+  .mui-slider-item > ul li {
+    width: 20%; /* 一行，显示5个元素 */
+    overflow: hidden; 
+	}
+    .mui-slider-item > ul li span {
+     width: 40px;
+      height: 40px;
+	 line-height: 40px;
+      display: block;
+      margin: 15px;
+      background: yellow;
+      border-radius: 50%;
+      text-align: center; }
+
+.save-btn {
+  width: 80%;
+  background: yellow;
+  color: #000;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  border: 1px solid yellow;
+  transform: translateX(-50%); }

@@ -6,6 +6,7 @@ var router = express.Router();
 var userBill = require('./bill/bill');
 var userClass = require('./class/class');
 var userLogin = require('./login/login');
+var userIcon = require('./icon/icon');
 
 
 //用户登录
@@ -25,6 +26,12 @@ router.post('/api/getClass',userClass.getClass);
 
 //添加账单
 router.post('/api/insertBill',userBill.insertBill);
+
+// //查询所有ICON图标
+router.post('/api/getIcon',userIcon.findIcon);
+
+
+
 
 
 

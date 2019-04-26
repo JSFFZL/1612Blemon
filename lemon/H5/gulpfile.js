@@ -18,7 +18,10 @@ gulp.task('webserver',function(){
 			//添加账单
 			{source:"/api/insertBill",target:"http://localhost:3000/api/insertBill"},
 			//删除账单
-			{source:"/api/deleteBill",target:"http://localhost:3000/api/deleteBill"}
+			{source:"/api/deleteBill",target:"http://localhost:3000/api/deleteBill"},
+			//获取所有icon图标
+			{source:"/api/getIcon",target:"http://localhost:3000/api/getIcon"},
+			
 		]
 	}))
 })

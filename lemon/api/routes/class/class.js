@@ -21,6 +21,7 @@ var getClass =  function(req, res, next) {
   })
 }
 
+
 module.exports = {
   getClass
 };

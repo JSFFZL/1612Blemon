@@ -2,7 +2,8 @@ require.config({
 	paths: {
 		"mui": "libs/mui.min",
 		"dtPicker": "libs/mui.picker.min",
-		"poppicker": "libs/mui.poppicker"
+		"poppicker": "libs/mui.poppicker",
+		"echar": "libs/echarts.min"
 	},
 	shim: {
 		"dtPicker": {
@@ -14,8 +15,7 @@ require.config({
 	}
 })
 
-require(["mui", "dtPicker", "poppicker"], function(mui, dtPicker, poppicker) {
-
+require(["mui", "dtPicker", "poppicker", "echar"], function(mui, dtPicker, poppicker, echarts) {
 	/* 全局变量 */
 
 	//获取当前缓存的用户ID
@@ -40,7 +40,29 @@ require(["mui", "dtPicker", "poppicker"], function(mui, dtPicker, poppicker) {
 	let getYear = document.querySelector('.timer').innerHTML;
 	let expense = 0; //花费总金额
 	let getIncome = 0; //收入总金额
+	let dataNum = [];
 
+	/*dataNum= [{
+			value: 335,
+			name: '旅游'
+		},
+		{
+			value: 310,
+			name: '邮件营销'
+		},
+		{
+			value: 234,
+			name: '联盟广告'
+		},
+		{
+			value: 135,
+			name: '视频广告'
+		},
+		{
+			value: 1548,
+			name: '搜索引擎'
+		}
+	]*/
 
 
 
@@ -76,6 +98,8 @@ require(["mui", "dtPicker", "poppicker"], function(mui, dtPicker, poppicker) {
 		dtPickerFun();
 		yearFun();
 		addBill();
+		tab(); //图表切换
+		echar();
 
 		//初始化日期组件
 		dtPickerTimer = new mui.DtPicker({
@@ -194,9 +218,8 @@ require(["mui", "dtPicker", "poppicker"], function(mui, dtPicker, poppicker) {
 					timeout: 10000, //超时时间设置为10秒；
 					success: function(res) {
 						if (res.code == 0) {
-							mui.alert(res.msg,function (e) {
-							},'div')
-						}else{
+							mui.alert(res.msg, function(e) {}, 'div')
+						} else {
 							localStorage.setItem("uid", res.data);
 							document.querySelector(".home").classList.remove("hide");
 							document.querySelector(".login").classList.add("hide");
@@ -215,35 +238,73 @@ require(["mui", "dtPicker", "poppicker"], function(mui, dtPicker, poppicker) {
 	//根据当前登录的用户查询账单
 	function getBillFun(timer) {
 		// /api/getBill
+		document.querySelector(".innerBox").style.display = "block"; //lodding 等待效果
 		localUid = localStorage.getItem("uid");
-		setTimeout(function() { //lodding 等待效果
+		setTimeout(function() {
 			mui.ajax('/api/getBill', {
 				data: {
 					uid: localUid,
-					timer: timer || getTimer
+					timer:"2019-03"
+					// timer: timer || getTimer
 				},
 				dataType: 'json', //服务器返回json格式数据
 				type: 'post', //HTTP请求类型
 				timeout: 10000, //超时时间设置为10秒；
 				success: function(res) {
+					document.querySelector(".innerBox").style.display = "none" //lodding 等待效果
 					render(res.data);
+
+					// console.log(res.data);
+					var objNum = {}
+					var arr = [];
+					// dataNum
+					
+// 					res.data.forEach((item)=>{
+// 						// console.log(item);
+// 						// console.log(objNum[item]); //
+// 						if(objNum[item.style]){ // item 上有style
+// 							objNum[item.style].money += item.money; //
+// 						}else{
+// 							//没有属性style,创建一个style
+// 							objNum[item.style] = item;
+// 						}
+// 					})
+// 					// console.log(Object.values(objNum));
+// 					console.log(objNum);
+// 					
+// 					for (let okey in objNum) {
+// 						console.log(okey);
+// 						dataNum.push(okey(objNum))
+// 					}
+// 							
+// 					console.log(dataNum);
+// 					echar(); //图表
+
 				}
 			});
-		}, 1500)
+		}, 1000)
 
 	}
 
 	//渲染的函数
 
 	function render(data) {
+		// console.log(data.length === 0);
+		if (data.length === 0) {
+			document.querySelector(".no-bill").style.display = "block";
+			return
+		} else {
+			document.querySelector(".no-bill").style.display = "none";
+		}
+
 		let str = "";
 		data.forEach(function(item) {
-
 			if (item.income == "支出") {
 				expense += item.money
 			} else {
 				getIncome += item.money
 			}
+
 			str +=
 				`<li class="mui-table-view-cell li">
 					<div class="mui-slider-right mui-disabled">
@@ -288,9 +349,10 @@ require(["mui", "dtPicker", "poppicker"], function(mui, dtPicker, poppicker) {
 			window.location.href = '../html/userClass.html';
 		})
 	}
-	
-	function delBill(){
-	}
+
+
+	//删除账单
+	function delBill() {}
 
 	mui('#OA_task_1').on('tap', '.mui-btn', function(event) {
 		var elem = this;
@@ -300,7 +362,7 @@ require(["mui", "dtPicker", "poppicker"], function(mui, dtPicker, poppicker) {
 				//确认删除
 				li.parentNode.removeChild(li);
 				location.reload();
-				
+
 			} else {
 				//取消删除
 				setTimeout(function() {
@@ -311,6 +373,69 @@ require(["mui", "dtPicker", "poppicker"], function(mui, dtPicker, poppicker) {
 	});
 
 
+	//账单图表切换
+	function tab() {
+
+		var lis = document.querySelectorAll(".tab ul li");
+		mui('.tab').on("tap", "li", function() {
+			for (var i = 0; i < lis.length; i++) {
+				lis[i].classList.remove('active');
+				this.classList.add('active');
+				if (this.innerHTML == "账单") {
+					document.querySelector(".box").style.display = "block";
+					document.querySelector(".each").style.display = "none";
+				} else {
+					document.querySelector(".box").style.display = "none";
+					document.querySelector(".each").style.display = "block";
+				}
+			}
+		})
+
+	}
+
+	function echar() {
+
+		var myChart = echarts.init(document.querySelector("#eachBox"));
+
+		// 指定图表的配置项和数据
+		var option = {
+			tooltip: {
+				trigger: 'item',
+				formatter: "{a} <br/>{b} : {c} ({d}%)"
+			},
+			series: [{
+				name: '访问来源',
+				type: 'pie',
+				radius: '55%',
+				center: ['50%', '60%'],
+				data: dataNum
+			}]
+		};
+
+
+		// 使用刚指定的配置项和数据显示图表。
+		myChart.setOption(option);
+	}
+
 	init()
+	
+	
+	mui.ajax('',{
+		data:{
+			
+		},
+		dataType:'json',//服务器返回json格式数据
+		type:'post',//HTTP请求类型
+		timeout:10000,//超时时间设置为10秒；
+		success:function(data){
+			
+		}
+	});
+	
+
 
 })
+
+
+
+
